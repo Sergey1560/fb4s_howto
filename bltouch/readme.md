@@ -6,6 +6,10 @@
 * Бессистемный техноблог [Краткий рассказ о подключении датчика уровня стола BLTouch или его китайского аналога 3DTouch к плате MKS Robin Nano](https://www.youtube.com/watch?v=39TEYQN8iQ4)
 * Sergey Irbis [Сравнение BLTouch и 3DTouch, тесты с кривым столом.](https://www.youtube.com/watch?v=x8OQZP-a3kc)
 
+## Датчик
+
+[BLTouch](https://aliexpress.ru/item/32832887426.html) от Trianglelab. В комплекте с датчиком идут провода, но их длины не хватает для подключения к плате на FB4S. Для удлинения проводов можно использовать еще один комплект [удлинителя](https://aliexpress.ru/item/32842916585.html)
+
 ## Установка датчика
 
 Я устанавливал датчик на [универсальную голову](https://www.thingiverse.com/thing:4394165)
