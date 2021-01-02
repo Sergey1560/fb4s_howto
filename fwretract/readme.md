@@ -73,7 +73,7 @@ G1 X116.248 Y88.772 E0.03881
 
 Параметры отката заданные в Marlin/Configuration_adv.h используются в том случае, если не заданы никакие другие командами [M207](https://marlinfw.org/docs/gcode/M207.html)/[M208](https://marlinfw.org/docs/gcode/M208.html)
 
-## Настройка SuperSlicer/PrusiaSlicer
+## Настройка SuperSlicer/PrusaSlicer
 
 Включение функции firmware rectract ("использовать втягивание прошивки") находится в настройках принтера.
 Для управления параметрами отката в стартовый код нужно добавить:
