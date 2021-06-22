@@ -105,7 +105,7 @@
 sudo armbian-add-overlay sun8i-h3-ili9486.dts
 ```
 
-Overlay будет установлен в папке пользовательских overlay-ев. Для применения достаточно перезагрузить систему. В выводе dmesg должны появится два устройства на SPI шине:
+Overlay будет установлен в папке пользовательских overlay-ев. Для применения достаточно перезагрузить систему. В выводе dmesg должны появиться два устройства на SPI шине и изображение на экране:
 
 ```
 sergey@orangepizero:~$ dmesg|grep spi
@@ -115,4 +115,62 @@ sergey@orangepizero:~$ dmesg|grep spi
 [   10.427147] [drm] Initialized ili9486 1.0.0 20200118 for spi1.1 on minor 0
 [   12.365795] ili9486 spi1.1: [drm] fb0: ili9486drmfb frame buffer device
 ```
+
+## Установка KlipperScreen
+
+[KlipperScreen](https://github.com/jordanruthe/KlipperScreen) написан на python и выводит изображение на экран через X-сервер. Для установки KlipperScreen нужно установить дополнительные пакеты:
+
+```
+sudo apt install xorg xinit xserver-xorg-legacy libjpeg-dev zlib1g-dev python3-pip python3-dev libatlas-base-dev python3-gi-cairo python3-virtualenv gir1.2-gtk-3.0 virtualenv matchbox-keyboard wireless-tools xdotool xinput x11-xserver-utils libopenjp2-7 python3-distutils python3-gi python3-setuptools python3-wheel
+```
+
+При установке python-библиотек, некоторые из них компилируются. Для сборки используется папка /tmp. По-умолчанию для /tmp используется tmpfs и монтируется папка в RAM. Для компиляции некоторых библиотек места в этом разделе не хватит. На моей плате 512мб памяти, этого так же не хватит для сборки, поэтому будет использоваться swap. По умолчанию swap раздел так же сделан не большим. Для успешной сборки нужно увеличить swap:
+
+```
+sergey@orangepizero:~$ df -h
+Filesystem      Size  Used Avail Use% Mounted on
+udev            189M     0  189M   0% /dev
+tmpfs            50M  2.3M   47M   5% /run
+/dev/mmcblk0p1   14G  1.5G   13G  11% /
+tmpfs           246M     0  246M   0% /dev/shm
+tmpfs           5.0M     0  5.0M   0% /run/lock
+tmpfs           246M     0  246M   0% /sys/fs/cgroup
+tmpfs           246M  4.0K  246M   1% /tmp
+/dev/zram1       49M  1.6M   44M   4% /var/log
+tmpfs            50M     0   50M   0% /run/user/1000
+```
+
+```
+sudo fallocate -l 1G /swapfile
+sudo chmod 600 /swapfile
+sudo mkswap /swapfile
+sudo swapon /swapfile
+```
+
+Раздел /tmp временно можно так же разместить на SD карте. Для этого его можно просто отмонтировать:
+
+```
+sudo umount /tmp
+```
+
+После этого можно при помощи KIAUH установить Klipper, Moonraker, Fluidd, KlipperScreen.
+
+Для работы KlipperScreen нужно сделать autologin в систему. Для этого нужно создать файл /lib/systemd/system/getty@tty1.service.d/20-autologin.conf
+
+```
+[Service]
+ExecStart=
+ExecStart=-/sbin/agetty --autologin sergey --noclear %I $TERM
+```
+
+В /etc/X11/Xwrapper.config нужно добавить:
+
+```
+allowed_users=anybody
+needs_root_rights=yes
+```
+
+После перезагрузки KlipperScreen должен запуститься
+
+## Настройка touch
 
