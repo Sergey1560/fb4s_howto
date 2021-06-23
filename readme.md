@@ -7,3 +7,4 @@
 * [Marlin с MKS UI](./mks_ui/readme.md)
 * [Стандартная прошивка FB4S/5](./stock_fw/readme.md)
 * [Firmware retract](./fwretract/readme.md)
+* [Orange Pi, KlipperScreen](./klipper/orange_pi_zero.md)
