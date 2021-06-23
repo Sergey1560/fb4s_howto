@@ -148,6 +148,13 @@ sudo swapon /swapfile
 sudo umount /tmp
 ```
 
+Для успешной установки всех зависимостей KlipperScreen, предварительно нужно установить vext и vext.gi:
+
+```
+pip3 install vext
+pip3 install vext.gi
+```
+
 После этого можно при помощи [Kiauh](https://github.com/th33xitus/kiauh) установить [Klipper](https://github.com/KevinOConnor/klipper), [Moonraker](https://github.com/Arksine/moonraker), [Fluidd](https://github.com/cadriel/fluidd), [KlipperScreen](https://github.com/jordanruthe/KlipperScreen). Поскольку раздел /tmp временно размещен на SD карте, а при сборке библиотек активно используется запись-чтение, процес сборки и установки библиотек (особенно matplotlib) достаточно длительный.
 
 После завершения установки можно удалить все содержимое /tmp и смонтировать этот каталог обратно в RAM (или просто перезагрузить)
