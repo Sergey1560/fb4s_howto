@@ -14,13 +14,13 @@
 
 У платы Orange Pi Zero 40-иновая колодка совпадает с Raspberry Pi, поэтому экран можно подключить прямо к плате. Важно только правильно ориентировать экран.
 
-![Orange Pi Zero pinout](./klipper/img/orange-pi-zero-piout.png)
+![Orange Pi Zero pinout](./img/orange-pi-zero-piout.png)
 
-![TFT pinout](./klipper/img/lcd_pinout.jpg)
+![TFT pinout](./img/lcd_pinout.jpg)
 
 Сам экран выполнен на основе микросхемы ILI9486. Эта микросхема умеет работать как по параллельному интерфейсу, так и по последовательному. По какой-то причине разработчики включили параллельный интерфейс, а затем при помощи сдвиговых регистров превратили его в последовательный:
 
-![TFT schematic](./klipper/img/ili9486_shematic.png)
+![TFT schematic](./img/ili9486_shematic.png)
 
 Из распиновки Orange Pi Zero видно, что экран подключается к SPI1. CS сигнал экрана будет подключен на PA13, а CS сигнал для touch-панели будет подключен на PA10. Сигнал IRQ от touch панели подключен к PA1. Сам touch выполнен на микросхеме TP2046 (аналог ADS7846).
 
