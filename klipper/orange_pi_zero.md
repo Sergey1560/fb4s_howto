@@ -12,7 +12,7 @@
 
 ## Подключение экрана
 
-У платы Orange Pi Zero 40-иновая колодка совпадает с Raspberry Pi, поэтому экран можно подключить прямо к плате. Важно только правильно ориентировать экран.
+У платы Orange Pi Zero 40-ка пиновая колодка совпадает с Raspberry Pi, поэтому экран можно подключить прямо к плате. Важно только правильно ориентировать экран.
 
 ![Orange Pi Zero pinout](./img/orange-pi-zero-piout.png)
 
@@ -92,7 +92,7 @@
 };
 ```
 
-[Готовый файл](klipper/sun8i-h3-ili9486.dts)
+[Готовый файл](./sun8i-h3-ili9486.dts)
 
 В overlay для SPI1 указаны два cs-gpios, для двух устройств на шине SPI. Выбор конкретного CS - в overlay устройства в параметре reg
 
@@ -154,6 +154,8 @@ sudo umount /tmp
 
 После этого можно при помощи KIAUH установить Klipper, Moonraker, Fluidd, KlipperScreen. Поскольку раздел /tmp временно размещен на SD карте, а при сборке библиотек активно используется запись-чтение, процес сборки и установки библиотек (особенно matplotlib) достаточно длительный.
 
+После завершения установки можно удалить все содержимое /tmp и смонтировать этот каталог обратно в RAM (или просто перезагрузить)
+
 Для работы KlipperScreen нужно сделать autologin в систему. Для этого нужно создать файл /lib/systemd/system/getty@tty1.service.d/20-autologin.conf
 
 ```
@@ -207,7 +209,7 @@ Section "InputClass"
         MatchDevicePath "/dev/input/event*"
         Driver "libinput"
         Option "TransformationMatrix" "0 1 0 -1 0 1 0 0 1"
-		Option    "SwapXY"    "1"
-		Option	"InvertX"     "1"
+	Option    "SwapXY"    "1"
+	Option	"InvertX"     "1"
 EndSection
 ```
