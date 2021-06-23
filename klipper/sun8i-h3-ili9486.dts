@@ -55,7 +55,6 @@
 			ti,pressure-min = /bits/ 16 <0>;
 			ti,pressure-max = /bits/ 16 <0xFFFF>;
 			ti,x-plate-ohms = /bits/ 16 <400>;
-			ti,swap-xy = <1>;
 		};
 	};
 	};

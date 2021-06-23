@@ -84,7 +84,6 @@
 			ti,pressure-min = /bits/ 16 <0>;
 			ti,pressure-max = /bits/ 16 <0xFFFF>;
 			ti,x-plate-ohms = /bits/ 16 <400>;
-			ti,swap-xy = <1>;
 		};
 	};
 	};
@@ -153,7 +152,7 @@ sudo swapon /swapfile
 sudo umount /tmp
 ```
 
-После этого можно при помощи KIAUH установить Klipper, Moonraker, Fluidd, KlipperScreen.
+После этого можно при помощи KIAUH установить Klipper, Moonraker, Fluidd, KlipperScreen. Поскольку раздел /tmp временно размещен на SD карте, а при сборке библиотек активно используется запись-чтение, процес сборки и установки библиотек (особенно matplotlib) достаточно длительный.
 
 Для работы KlipperScreen нужно сделать autologin в систему. Для этого нужно создать файл /lib/systemd/system/getty@tty1.service.d/20-autologin.conf
 
@@ -174,3 +173,41 @@ needs_root_rights=yes
 
 ## Настройка touch
 
+Для корректной работы touch-панели, нужно правильно ее настроить. При подключении по ssh, посмотреть доступные устройства (при запущенном X сервере) можно так:
+
+```
+sergey@orangepizero:~$ DISPLAY=:0.0 xinput list
+⎡ Virtual core pointer                    	id=2	[master pointer  (3)]
+⎜   ↳ Virtual core XTEST pointer              	id=4	[slave  pointer  (2)]
+⎜   ↳ ADS7846 Touchscreen                     	id=6	[slave  pointer  (2)]
+⎣ Virtual core keyboard                   	id=3	[master keyboard (2)]
+    ↳ Virtual core XTEST keyboard             	id=5	[slave  keyboard (3)]
+```
+
+В моем случае, экран был повернут на 90 градусов. Для поворота координат touch нужно воспользовать [Coordinate Transformation Matrix](https://wiki.ubuntu.com/X/InputCoordinateTransformation). Стандартные матрицы для поворота указаны так же в [wiki KlipperScreen](https://klipperscreen.readthedocs.io/en/latest/Installation/)
+
+Посмотреть используемую матрицу:
+
+```
+DISPLAY=:0.0 xinput list-props 'ADS7846 Touchscreen' | grep "Coordinate Transformation Matrix"
+```
+
+Применить новую матрицу:
+
+```
+DISPLAY=:0.0 xinput --set-prop 'ADS7846 Touchscreen' 'Coordinate Transformation Matrix' 0 1 0 -1 0 1 0 0 1
+```
+
+Для того, чтобы сохранить настройки touch-панели нужно создать файл /etc/X11/xorg.conf.d/99-calibration.conf:
+
+```
+Section "InputClass"
+        Identifier "ADS7846 Touchscreen"
+        MatchIsTouchscreen "on"
+        MatchDevicePath "/dev/input/event*"
+        Driver "libinput"
+        Option "TransformationMatrix" "0 1 0 -1 0 1 0 0 1"
+		Option    "SwapXY"    "1"
+		Option	"InvertX"     "1"
+EndSection
+```
