@@ -6,10 +6,6 @@
 
 В качестве экрана использован 3.5" экран для Raspberry Pi,  подключаемый по SPI.
 
-## Программная часть
-
-Установку самого [Klipper](https://github.com/KevinOConnor/klipper) и [Moonraker](https://github.com/Arksine/moonraker) можно сделать при помощи скрипта [Kiauh](https://github.com/th33xitus/kiauh), каких-то особенностей в установке нет. Есть некоторые особенности только в установке [KlipperScreen](https://github.com/jordanruthe/KlipperScreen).
-
 ## Подключение экрана
 
 У платы Orange Pi Zero 40-ка пиновая колодка совпадает с Raspberry Pi, поэтому экран можно подключить прямо к плате. Важно только правильно ориентировать экран.
@@ -152,7 +148,7 @@ sudo swapon /swapfile
 sudo umount /tmp
 ```
 
-После этого можно при помощи KIAUH установить Klipper, Moonraker, Fluidd, KlipperScreen. Поскольку раздел /tmp временно размещен на SD карте, а при сборке библиотек активно используется запись-чтение, процес сборки и установки библиотек (особенно matplotlib) достаточно длительный.
+После этого можно при помощи [Kiauh](https://github.com/th33xitus/kiauh) установить [Klipper](https://github.com/KevinOConnor/klipper), [Moonraker](https://github.com/Arksine/moonraker), [Fluidd](https://github.com/cadriel/fluidd), [KlipperScreen](https://github.com/jordanruthe/KlipperScreen). Поскольку раздел /tmp временно размещен на SD карте, а при сборке библиотек активно используется запись-чтение, процес сборки и установки библиотек (особенно matplotlib) достаточно длительный.
 
 После завершения установки можно удалить все содержимое /tmp и смонтировать этот каталог обратно в RAM (или просто перезагрузить)
 
