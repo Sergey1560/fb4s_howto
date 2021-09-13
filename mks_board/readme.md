@@ -37,7 +37,7 @@
 
 ## Robin Nano-s V1.3
 
-![Robin Nano-s v1.3](./robin_nano_s_v13/mks_robin_nano_s_v13.jpg)
+![Robin Nano-s v1.3](./robin_nano_s_v13/mks_robin_nano_s_v13.png)
 
 * **МК:** STM32F407VET6 168Mhz, 512KB flash, 192KB Ram
 * **Драйвера:** на плате распаяно 4 драйвера TMC2225 и есть 1 слот под установку дополнительного драйвера.
