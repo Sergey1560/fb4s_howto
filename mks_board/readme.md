@@ -23,8 +23,8 @@
 * **Драйвера:** сменные. На 4S устанавливались 4 драйвера A4988, на 5 в разное время устанавливался разный набор драйверов: либо 2 драйвера A4988 + 2 драйвера TMC 2208, либо все 4 драйвера TMC 2208.
 * **Экран:** параллельная 16-бит шина, FSMC
 * **Bootloader:**
-  *[Загрузчик](./robin_nano_v1/rn_v1_bootloader.bin) записан с начала flash, по адресу 0x080000.
-  *Смещение основной прошивки - 0x7000 (28кб). Загрузчик использует шифрование основной прошивки. 
+  *[Загрузчик](./robin_nano_v1/rn_v1_bootloader.bin) записан с начала flash, по адресу 0x08000000
+  *Смещение основной прошивки - 0x7000 (28кб). Загрузчик использует шифрование основной прошивки.
   *В качестве алгоритма шифрования используется xor ключем {0xA3, 0xBD, 0xAD, 0x0D, 0x41, 0x11, 0xBB, 0x8D, 0xDC, 0x80, 0x2D, 0xD0, 0xD2, 0xC4, 0x9B, 0x1E, 0x26, 0xEB, 0xE3, 0x33, 0x4A, 0x15, 0xE4, 0x0A, 0xB3, 0xB1, 0x3C, 0x93, 0xBB, 0xAF, 0xF7, 0x3E} с 320 по 31040 байт основной прошики. Это шифрование уже добавлено в Marlin (автоматически при сборке) и Klipper (скрипт /scripts/update_mks_robin.py)
 
 * **Схема:** [Схема](./robin_nano_v1/MKS_Robin_Nano_V1.1_SCH.pdf)
@@ -33,4 +33,19 @@
   * [4 драйвера 2208](./robin_nano_v1/firmware_v1_(4x2208).zip)
 * **Дополнительно:**
 Отличие плат MKS Robin Nano V1.1, V1.2 и Flying Bear Reborn v2.0 незначительны, это фактически одна и таже плата.
-В Marlin в параметре board BOARD_MKS_ROBIN_NANO, в platformio.ini default_envs = mks_robin_nano35, тип экрана MKS_ROBIN_TFT35.
+В Marlin в параметре MOTHERBOARD нужно установить BOARD_MKS_ROBIN_NANO, в platformio.ini default_envs = mks_robin_nano35, тип экрана MKS_ROBIN_TFT35.
+
+## Robin Nano-s V1.3
+
+![Robin Nano-s v1.3](./robin_nano_s_v13/mks_robin_nano_s_v13.jpg)
+
+* **МК:** STM32F407VET6 168Mhz, 512KB flash, 192KB Ram
+* **Драйвера:** на плате распаяно 4 драйвера TMC2225 и есть 1 слот под установку дополнительного драйвера.
+* **Экран:** параллельная 16-бит шина, FSMC
+* **Bootloader:**
+  *[Загрузчик](./mks_board/robin_nano_s_v13/nano_s_bootloader.bin) записан с начала flash, по адресу 0x08000000
+  * Смещение основной прошивки 0x8000 (32кБ)
+  * Шифрование не используется
+* **Схема:** [Схема](./robin_nano_s_v13/MKS_Robin_Nano_S_V1.3.pdf)
+* **Стандартная прошивка:** [Прошивка](./robin_nano_s_v13/firmware_s_v1.3.zip)
+* **Дополнительно:** на данный момент поддержка платы в офф. репозиторий Marlin не добавлена. Тестовая поддержка платы добавлена в [сборку Marlin для принтеров FB](https://github.com/Sergey1560/Marlin_FB4S). В параметре MOTHERBOARD нужно установить BOARD_MKS_ROBIN_NANO_S_V13, в platformio.ini default_envs = mks_robin_nano_v1_3, тип экрана MKS_ROBIN_TFT35. Для использования сменного драйвера в качестве драйвера для экструдера, в файле Marlin/src/pins/stm32f4/pins_MKS_ROBIN_NANO_S_V13.h параметр EXT_EXTRUDER_DRIVER нужно установить в 1.
