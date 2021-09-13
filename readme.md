@@ -6,5 +6,6 @@
 * [Подключение TMC2209 по UART](./tmc_uart/readme.md)
 * [Marlin с MKS UI](./mks_ui/readme.md)
 * [Стандартная прошивка FB4S/5](./stock_fw/readme.md)
+* [Платы управления принтером Flying Bear 4S/5](./mks_board/readme.md)
 * [Firmware retract](./fwretract/readme.md)
 * [Orange Pi, KlipperScreen](./klipper/orange_pi_zero.md)
