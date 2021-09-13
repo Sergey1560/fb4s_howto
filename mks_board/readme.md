@@ -35,9 +35,9 @@
 Отличие плат MKS Robin Nano V1.1, V1.2 и Flying Bear Reborn v2.0 незначительны, это фактически одна и таже плата.
 В Marlin в параметре MOTHERBOARD нужно установить BOARD_MKS_ROBIN_NANO, в platformio.ini default_envs = mks_robin_nano35, тип экрана MKS_ROBIN_TFT35.
 
-## Robin Nano-s V1.3
+## Robin Nano-S V1.3
 
-![Robin Nano-s v1.3](./robin_nano_s_v13/mks_robin_nano_s_v13.png)
+![Robin Nano-S v1.3](./robin_nano_s_v13/mks_robin_nano_s_v13.png)
 
 * **МК:** STM32F407VET6 168Mhz, 512KB flash, 192KB Ram
 * **Драйвера:** на плате распаяно 4 драйвера TMC2225 и есть 1 слот под установку дополнительного драйвера.
