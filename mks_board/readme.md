@@ -27,8 +27,8 @@
 
 * **Схема:** [Схема](./robin_nano_v1/MKS Robin Nano V1.1_001 SCH.pdf)
 * **Стандартная прошивка:**
-[2 драйвера А4988 и 2 драйвер 2208](./robin_nano_v1/firmware_v1_(4988+2208).zip)
-[4 драйвера 2208](./robin_nano_v1/firmware_v1_(4x2208).zip)
+  * [2 драйвера А4988 и 2 драйвер 2208](./robin_nano_v1/firmware_v1_(4988+2208).zip)
+  * [4 драйвера 2208](./robin_nano_v1/firmware_v1_(4x2208).zip)
 * **Дополнительно:**
 Отличие плат MKS Robin Nano V1.1, V1.2 и Flying Bear Reborn v2.0 незначительны, это фактически одна и таже плата.
 В Marlin в параметре board BOARD_MKS_ROBIN_NANO, в platformio.ini default_envs = mks_robin_nano35, тип экрана MKS_ROBIN_TFT35.
