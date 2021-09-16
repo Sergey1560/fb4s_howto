@@ -9,3 +9,4 @@
 * [Платы управления принтером Flying Bear 4S/5](./mks_board/readme.md)
 * [Firmware retract](./fwretract/readme.md)
 * [Orange Pi, KlipperScreen](./klipper/orange_pi_zero.md)
+* [Armbian GPIO](./armbian_gpio/readme.md)
