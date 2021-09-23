@@ -32,7 +32,7 @@
   * [2 драйвера А4988 и 2 драйвер 2208](./robin_nano_v1/firmware_v1_(4988+2208).zip)
   * [4 драйвера 2208](./robin_nano_v1/firmware_v1_(4x2208).zip)
 * **Дополнительно:**
-Отличие плат MKS Robin Nano V1.1, V1.2 и Flying Bear Reborn v2.0 незначительны, это фактически одна и таже плата.
+Различия плат MKS Robin Nano V1.1 и Flying Bear Reborn v2.0 отсутствуют, это фактически одна и таже плата. Основные отличия V1.2 в нативным подключением Bltouch и возможности отключить питание платы от USB.
 В Marlin в параметре MOTHERBOARD нужно установить BOARD_MKS_ROBIN_NANO, в platformio.ini default_envs = mks_robin_nano35, тип экрана MKS_ROBIN_TFT35.
 
 ## Robin Nano-S V1.3
@@ -64,3 +64,31 @@
 * **Схема:** [Схема](./robin_nano_v13/MKS_Robin_Nano_V1.3_SCH.pdf)
 * **Стандартная прошивка:** [Прошивка](./robin_nano_v13/firmware_v13.zip)
 * **Дополнительно:** на данный момент поддержка платы в офф. репозиторий Marlin не добавлена. Тестовая поддержка платы добавлена в [сборку Marlin для принтеров FB](https://github.com/Sergey1560/Marlin_FB4S). В параметре MOTHERBOARD нужно установить BOARD_MKS_ROBIN_NANO_S_V13, в platformio.ini default_envs = mks_robin_nano_v1_3, тип экрана MKS_ROBIN_TFT35. Для использования сменного драйвера в качестве драйвера для экструдера, в файле Marlin/src/pins/stm32f4/pins_MKS_ROBIN_NANO_S_V13.h параметр EXT_EXTRUDER_DRIVER нужно установить в 1.
+
+## Robin Nano V2.0
+
+![Robin Nano v2.0](./robin_nano_v2/MKS_Robin_Nano_V2.png)
+
+* **МК:** STM32F103VET6 72Mhz, 512KB flash, 64KB Ram
+* **Драйвера:** 4 сменных драйвера с возможностью подключения по UART или SPI.
+* **Экран:** последовательная шина, SPI с возможностью подключения как SPI-TFT так и SPI-LCD
+* **Bootloader:**
+  * [Загрузчик](./robin_nano_v2/Robin_nano_v2.0_boot_201116.hex)
+* **Схема:** [Схема](./robin_nano_v2/MKS Robin Nano V2.0_001 SCH.pdf)
+* **Стандартная прошивка:** Отсутствует. Flying Bear не стаят данную плату в свом принтеры.
+* **Дополнительно:** Данную плата не совместима с экраном, оспользуемом в Nano V1.х. Плату лучше ставить вместе с экраном MKS TS35(SPI), однако, поддерживаются и экраны LCD12864,LCD2004, и подключаемые по UART. Поддержка платы в офф. репозиторий Marlin присутствует, но подключение по WIFI работает только на графическом интерфейсе TFT_LVGL_UI экрана MKS TS35(SPI). Поддержка работы WIFI на графических интерфейсах TFT_CLASSIC_UI и TFT_COLOR_UI добавлена в [сборке Marlin для принтеров FB](https://github.com/Sergey1560/Marlin_FB4S). В параметре MOTHERBOARD нужно установить BOARD_MKS_ROBIN_NANO_V2, в platformio.ini default_envs = mks_robin_nano35 , тип экрана MKS_TS35_V2_0 для TS35(SPI).
+[Подробные особенности платы] (https://3dtoday.ru/blogs/x-dron/mks-robin-nano-20-novyy-khit).
+[Опыт использования платы] (https://3dtoday.ru/blogs/x-dron/opyt-ustanovki-robin-nano-20-na-flyingbear-ghost-4s). За год показала себя с самой лучшей стороны.
+
+## Robin Nano V3.0
+
+![Robin Nano v3.0](./robin_nano_v3/MKS_Robin_Nano_V3.jpg)
+
+* **МК:** STM32F407VET6 168Mhz, 512KB flash, 192KB Ram
+* **Драйвера:** 4 сменных драйвера с возможностью подключения по UART или SPI.
+* **Экран:** последовательная шина, SPI с возможностью подключения как SPI-TFT так и SPI-LCD
+* **Bootloader:**
+  * [Загрузчик](./robin_nano_v3/nano_v3_bootloader.bin)
+* **Схема:** [Схема](./robin_nano_v3/MKS Robin Nano V3.0_004 SCH.pdf)
+* **Стандартная прошивка:** Отсутствует. Flying Bear не стаят данную плату в свом принтеры.
+* **Дополнительно:** Данную плата позиционируется как развитие Nano V2.0. Только развитие бестолковое. Поддержка платы в офф. репозиторий Marlin присутствует, но подключение по WIFI работает только на графическом интерфейсе TFT_LVGL_UI экрана MKS TS35(SPI). Поддержка работы WIFI на графических интерфейсах TFT_CLASSIC_UI и TFT_COLOR_UI нет. К применению не рекомендуется.
