@@ -10,3 +10,4 @@
 * [Firmware retract](./fwretract/readme.md)
 * [Orange Pi, KlipperScreen](./klipper/orange_pi_zero.md)
 * [Armbian GPIO](./armbian_gpio/readme.md)
+* [Экран MKS TFT35 по SPI](./mks_lcd/readme.md)
