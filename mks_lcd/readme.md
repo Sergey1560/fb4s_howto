@@ -4,7 +4,7 @@
 
 ## ILI9488
 
-В [datasheet](./ds/mks_lcd/ds/ILI9488 Data Sheet_100.pdf) на контроллер есть описание интерфейсов, с которыми работает этот контроллер.
+В [datasheet](./ds/mks_lcd/ds/ILI9488_Data_Sheet.pdf) на контроллер есть описание интерфейсов, с которыми работает этот контроллер.
 
 ![ILI9488 System interface](./img/system_interface.png)
 
