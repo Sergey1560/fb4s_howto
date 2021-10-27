@@ -51,7 +51,7 @@
   * Шифрование не используется
 * **Схема:** [Схема](./robin_nano_s_v13/MKS_Robin_Nano_S_V1.3.pdf)
 * **Стандартная прошивка:** [Прошивка](./robin_nano_s_v13/firmware_s_v1.3.zip)
-* **Дополнительно:** на данный момент поддержка платы в офф. репозиторий Marlin не добавлена. Тестовая поддержка платы добавлена в [сборку Marlin для принтеров FB](https://github.com/Sergey1560/Marlin_FB4S).
+* **Дополнительно:** Плата добавлена в Marlin начиная с версии 2.0.9.2
 
  В параметре MOTHERBOARD нужно установить BOARD_MKS_ROBIN_NANO_V1_3_F4, в platformio.ini default_envs = mks_robin_nano_v1_3_f4, тип экрана MKS_ROBIN_TFT35.
 
@@ -70,9 +70,9 @@
   * Шифрование не используется
 * **Схема:** [Схема](./robin_nano_v13/MKS_Robin_Nano_V1.3_SCH.pdf)
 * **Стандартная прошивка:** [Прошивка](./robin_nano_v13/firmware_v13.zip)
-* **Дополнительно:** на данный момент поддержка платы в офф. репозиторий Marlin не добавлена.
+* **Дополнительно:** Плата добавлена в Marlin начиная с версии 2.0.9.2
 
- Тестовая поддержка платы добавлена в [сборку Marlin для принтеров FB](https://github.com/Sergey1560/Marlin_FB4S). В параметре MOTHERBOARD нужно установить BOARD_MKS_ROBIN_NANO_V1_3_F4, в platformio.ini default_envs = mks_robin_nano_v1_3_f4, тип экрана MKS_ROBIN_TFT35.
+В параметре MOTHERBOARD нужно установить BOARD_MKS_ROBIN_NANO_V1_3_F4, в platformio.ini default_envs = mks_robin_nano_v1_3_f4, тип экрана MKS_ROBIN_TFT35.
 
  Для использования сменного драйвера в качестве драйвера для экструдера, в файле Marlin/src/pins/stm32f4/pins_MKS_ROBIN_NANO_V1_3_F4.h параметр EXT_EXTRUDER_DRIVER нужно установить в 1.
 
