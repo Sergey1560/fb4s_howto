@@ -193,7 +193,7 @@ restart_klipper_when_powered: true
 initial_state: on
 ```
 
-Для управления GPIO из klipper, нужен дополнительный mcu типа linux process ([подробности](https://www.klipper3d.org/RPi_microcontroller.html#building-the-micro-controller-code). Пример конфигурации:
+Для управления GPIO из klipper, нужен дополнительный mcu типа linux process ([подробности](https://www.klipper3d.org/RPi_microcontroller.html#building-the-micro-controller-code)). Пример конфигурации:
 
 ```
 [mcu host]
