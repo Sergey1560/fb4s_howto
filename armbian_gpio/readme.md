@@ -1,18 +1,6 @@
 # Управление GPIO в armbian
 
-Для настройки и проверки работы с GPIO нужно установить gpiod:
-
-```
-sudo apt-get install gpiod
-```
-
-Попытка изменения состояния ног приводит к ошибке:
-
-````
-gpioset: error setting the GPIO line values: Permission denied
-````
-
-Это связано с правами на устройства:
+Для работы с GPIO от пользователя (а не от root) необходимо дать пользователю права на устройства. По умолчанию доступ к GPIO имеет только root:
 
 ```
 ~$ ls -l /dev/gpiochip*
@@ -27,7 +15,7 @@ crw------- 1 root root 254, 1 Sep 16 11:42 /dev/gpiochip1
 ~$ sudo usermod -a -G gpio sergey
 ```
 
-Добавляем в udev правило для установки группы и прав доступа при загруке:
+Для изменения владельца при запуске системы нужно добавить правило udev:
 
 ```
  echo "SUBSYSTEM==\"gpio\", KERNEL==\"gpiochip[0-4]\", GROUP=\"gpio\", MODE=\"0660\"" |sudo tee -a  /etc/udev/rules.d/97-gpio.rules
@@ -42,7 +30,8 @@ crw------- 1 root root 254, 1 Sep 16 11:42 /dev/gpiochip1
 crw-rw---- 1 root gpio 254, 0 Sep 16 12:05 /dev/gpiochip0
 crw-rw---- 1 root gpio 254, 1 Sep 16 12:05 /dev/gpiochip1
 ```
-Для того, чтобы к текущему пользователю применилась добавленная группа gpio нужно выйти из системы и залогиниться снова. После этого можно проверить работу. gpiodetect покажет какие есть gpiochip и сколько на них линий, gpioinfo покажет список всех линий и какие функции на них активны.
+
+Для того, чтобы к текущему пользователю применилась добавленная группа gpio нужно выйти из системы и залогиниться снова. После этого можно проверить работу.
 
 Для проверки я использовал плату Orange Pi Zero.
 
@@ -176,9 +165,43 @@ sergey@orangepizero:~$
 
 В данном случае можно посмотреть на каком gpiochip находится нужный пин.
 
-Для управления можно воспользоваться командой gpioset. Например для управления ногой PA18:
+Для более удобной работы с GPIO из консоли можно установить пакет gpiod:
+
+```
+sudo apt-get install gpiod
+```
+
+gpiodetect покажет какие есть gpiochip и сколько на них линий, gpioinfo покажет список всех линий и какие функции на них активны. Для изменения состояния можно воспользоваться командой gpioset. Например для управления ногой PA18:
 
 ```
 ~$ gpioset gpiochip0 18=0
 ~$ gpioset gpiochip0 18=1
+```
+
+# Управление GPIO в klipper и moonraker
+
+Для управления GPIO из klipper или moonraker не требуются никакие дополнительные библиотеки. Если вы знаете нужный gpiochip и номер линии, достаточно просто установить права доступа на gpiochip для пользователя из под которого работает klipper или moonraker.
+
+Пример из конфигурации moonraker для управления питанием (подробнее в [config reference](https://github.com/Arksine/moonraker/blob/master/docs/configuration.md)):
+
+```
+[power printer]
+type: gpio
+pin: gpiochip0/gpio17
+off_when_shutdown: True
+restart_klipper_when_powered: true
+initial_state: on
+```
+
+Для управления GPIO из klipper, нужен дополнительный mcu типа linux process ([подробности](https://www.klipper3d.org/RPi_microcontroller.html#building-the-micro-controller-code). Пример конфигурации:
+
+```
+[mcu host]
+serial: /tmp/klipper_host_mcu
+
+[output_pin tft_led]
+pin: host: gpiochip0/gpio2
+pwm: False
+value: 1
+shutdown_value: 0
 ```
