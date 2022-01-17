@@ -12,3 +12,4 @@
 * [Armbian GPIO](./armbian_gpio/readme.md)
 * [Экран MKS TFT35 по SPI](./mks_lcd/readme.md)
 * [Подключение I2C устройств в Linux через device tree](./linux_dts/readme.md)
+* [Подключение модема Quectel EP-06 (QMI)](./quectel/readme.md)

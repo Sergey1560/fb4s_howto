@@ -25,7 +25,7 @@ Info: Interface "wwan0" enabled.
 ```
 
 ```
-root@orangepizero:/home/sergey# lsusb -t
+root# lsusb -t
     |__ Port 1: Dev 2, If 4, Class=Vendor Specific Class, Driver=qmi_wwan, 480M
 ```
 
