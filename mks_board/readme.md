@@ -77,6 +77,24 @@
 
  Для использования сменного драйвера в качестве драйвера для экструдера, в файле Marlin/src/pins/stm32f4/pins_MKS_ROBIN_NANO_V1_3_F4.h параметр EXT_EXTRUDER_DRIVER нужно установить в 1.
 
+
+## Flying Bear Reborn v3.0
+
+![Flying Bear Reborn v3.0](./fb_reborn_30/150739336-75f438d4-ea51-4672-99e7-b4f1ff73d610.jpg)
+
+* **МК:** STM32F103VET6 72Mhz, 512KB flash, KB Ram
+* **Драйвера:** 4 распаянных драйвера TMC 2225. В слоте 2-го эструдера драйвер не распаян.
+* **Экран:** параллельная 16-бит шина, FSMC
+* **Bootloader:**
+  * Оригинального загрузчика пока нет, но можно использовать от плат [robin nano v1.1](./robin_nano_v1/rn_v11_bootloader.bin).Записан с начала flash, по адресу 0x08000000
+  * Смещение основной прошивки  0x7000 (28кб)
+* **Схема:** [Схема](../robin_nano_s_v13/MKS_Robin_Nano_S_V1.3.pdf) аналогична схеме от платы robin nano-s 1.3
+* **Стандартная прошивка:** 
+* **Дополнительно:** 
+
+В Marlin в параметре MOTHERBOARD нужно установить BOARD_MKS_ROBIN_NANO, в platformio.ini default_envs = mks_robin_nano35, тип экрана MKS_ROBIN_TFT35.
+
+
 ## Robin Nano V2.0
 
 ![Robin Nano v2.0](./robin_nano_v2/MKS_Robin_Nano_V2.png)
