@@ -14,3 +14,5 @@
 * [Подключение I2C устройств в Linux через device tree](./linux_dts/readme.md)
 * [Подключение модема Quectel EP-06 (QMI)](./quectel/readme.md)
 * [Putty для отправки Gcode](./putty/readme.md)
+* [Подключение MKS TS35 V2.0](./mks_ts35/readme.md)
+
