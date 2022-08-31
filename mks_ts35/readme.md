@@ -32,7 +32,7 @@ TOUCH_IRQ PL10
 LED       3.3V
 ```
 
-В ядре к сожалению нет подходящего драйвера для контроллера st7796s. Есть [пример настройки на raspberry pi](https://github.com/willngton/3DPrinterConfig/blob/main/mks_ts35/mks_ts35_guide_archived.md) с драйвером tinylcd35. Однако в mainline ядре такого драйвера нет, и сам автор говорит, что "This guide have been archived due some kernel changes on raspbian mainline kernel".
+В ядре нет подходящего драйвера для контроллера st7796s. Есть [пример настройки на raspberry pi](https://github.com/willngton/3DPrinterConfig/blob/main/mks_ts35/mks_ts35_guide_archived.md) с драйвером tinylcd35. Однако в mainline ядре такого драйвера нет, и сам автор говорит, что "This guide have been archived due some kernel changes on raspbian mainline kernel".
 
 Сам по себе чипсет достаточно типовой, отличается только инициализация экрана. Поэтому можно собрать драйвер в виде внешнего модуля ядра.
 
@@ -208,3 +208,4 @@ sergey@orangepi3-lts:~$ DISPLAY=:0 xinput_calibrator -v --device 6
 
 На перекрестия лучше нажимать чем-то более тонким чем палец, например стилусом. В результате в терминале будет выведен результат ввиде пример конфигурации. Можно просто добавить параметры MinX, MaxX, MinY, MinY в /etc/X11/xorg.conf.d/51-touch.conf
 
+![MKS TS35 V2.0](./pic/klipperscreen.png)
