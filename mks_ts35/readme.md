@@ -151,7 +151,7 @@ Section "InputClass"
         MatchIsTouchscreen "on"
         MatchDevicePath "/dev/input/event*"
         Driver "libinput"
-    	Option "TransformationMatrix" "0 -1 1 -1 0 1 0 0 1"
+    	Option "TransformationMatrix" "0 1 0 1 0 0 0 0 1"
         Option	"SwapXY"	"1"
         Option	"InvertX"	"1"
         Option	"InvertY"	"1"
@@ -164,7 +164,7 @@ EndSection
 sudo apt install xserver-xorg-input-libinput
 ```
 
-Ориентация тач панели задается параметром TransformationMatrix. Настройки выше сделаны для экрана расположенного вертикально, как на Flying Bear 6. В моем случае, экран лежал энкодером вниз.
+Ориентация тач панели задается параметром TransformationMatrix. Настройки выше сделаны для экрана расположенного вертикально, как на Flying Bear 6.
 
 Для проверки работы KlipperScreen можно запустить его вручную, с выводом сообщений в терминал:
 
