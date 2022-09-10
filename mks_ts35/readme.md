@@ -48,7 +48,7 @@ Linux orangepi3-lts 5.15.63-sunxi64 #trunk SMP Tue Aug 30 11:31:51 UTC 2022 aarc
 Если архитектура отличается, список доступных пакетов можно псмотреть командой:
 
 ```
-sudo apt-cache search linux-headers-current
+sudo apt-cache search linux-headers-current-sunxi64
 ```
 
 Установка необходимых пакетов:
