@@ -213,7 +213,7 @@ shutdown_value: 0
 type: gpio
 pin: ^gpiochip0/gpio0
 on_press:
-  {% do call_method("machine.device_power.post_device",device="printer",action="toggle") %}
+  {% raw %}{% do call_method("machine.device_power.post_device",device="printer",action="toggle") %}
  ```
 
  Действие toggle будут переключать состояния при нажатии. Если отключать не нужно, можно использовать action="on", тогда по нажатию кнопки будет только включение питания.
