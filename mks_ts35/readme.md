@@ -43,12 +43,12 @@ root@orangepi3-lts:~# uname -a
 Linux orangepi3-lts 5.15.63-sunxi64 #trunk SMP Tue Aug 30 11:31:51 UTC 2022 aarch64 GNU/Linux
 ```
 
-Архитектура указана после версии ядра. В данном случае sunxi64. 
+Архитектура указана после версии ядра (5.15.63-sunxi64), в данном случае sunxi64. 
 
-Если архитектура отличается, список доступных пакетов можно псмотреть командой:
+Если архитектура отличается, список доступных пакетов можно посмотреть командой:
 
 ```
-sudo apt-cache search linux-headers-current-sunxi64
+sudo apt-cache search linux-headers-current
 ```
 
 Установка необходимых пакетов:
