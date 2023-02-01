@@ -1,3 +1,5 @@
+# Подключение акселерометра ADX345 к Orange Pi 3 LTS
+
 Данная заметка описывает подключение акселерометра ADXL345 к Orange PI 3 LTS. Я постарался описать общий подход к настройке, чтобы это можно было сделать на любом другом SBC. В качестве примера используется Armbian на debian 11 Bullsey (Armbian_22.11.1_Orangepi3-lts_bullseye_current_5.15.80_minimal) и дистрибутив от Orange Pi (Orangepi3-lts_3.0.8_debian_bullseye_server_linux5.16.17.img).
 
 Есть два варианта подключения - с использованием аппаратного блока SPI и программная эмуляция. Если есть свободный аппаратный блок, лучше использовать его. Если на SBC нет SPI или его ноги чем-то заняты, можно использовать любые свободные ноги gpio и программную эмуляцию. В данной заметке описаны оба способа.
@@ -25,7 +27,7 @@
 
 В файл нужно добавить "overlays=spi-spidev1". Если параметр "overlays" там уже есть, то spi-spidev1 нужно добавить в него через пробел, например: "overlays=uart1 spi-spidev1". Так же нужно добавить параметры, какой конкретно блок SPI нужно влкючить. Как видно со схемы выводов Orange Pi 3 LTS, на ногах PH3, PH4, PH5, PH6 используется SPI1, поэтому нужно указать "param_spidev_spi_bus=1".
 
-Таким образом, для дистрибутива от Orange PI файл /boot/orangepiEnv.txt изначально выглядел:
+Таким образом, для дистрибутива от Orange Pi файл /boot/orangepiEnv.txt изначально выглядел:
 
 ```
 verbosity=1
@@ -59,6 +61,38 @@ overlays=spi-spidev1
 param_spidev_spi_bus=1
 ```
 
+В случае Armbian, содержимое файла /boot/armbianEnv.txt до редактирования:
+
+```
+sergey@orangepi3-lts:~$ cat /boot/armbianEnv.txt 
+verbosity=1
+bootlogo=false
+console=both
+disp_mode=1920x1080p60
+overlay_prefix=sun50i-h6
+rootdev=UUID=53123900-5c68-4243-bf63-411c870e4a90
+rootfstype=ext4
+```
+
+Открываем для редактирования:
+
+```
+sudo nano /boot/armbianEnv.txt 
+```
+
+/boot/armbianEnv.txt после редактирования:
+
+```
+verbosity=1
+bootlogo=false
+console=both
+disp_mode=1920x1080p60
+overlay_prefix=sun50i-h6
+rootdev=UUID=53123900-5c68-4243-bf63-411c870e4a90
+rootfstype=ext4
+overlays=spi-spidev1
+param_spidev_spi_bus=1
+```
 
 После перезагрузки, во время старта uboot (если подключен монитор или консоль по uart), можно увидеть, что указанный dbto применился:
 
