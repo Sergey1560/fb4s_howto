@@ -16,4 +16,4 @@
 * [Putty для отправки Gcode](./putty/readme.md)
 * [Подключение MKS TS35 V2.0](./mks_ts35/readme.md)
 * [ADXL345 через RP2040](./pico_adx345/readme.md)
-* [ADXL345 через Orange Pi 3 LTS](./opi3lts_adxl354/readme.md)
+* [ADXL345 через Orange Pi 3 LTS](./opi3lts_adxl345/readme.md)
