@@ -21,7 +21,19 @@
 
 Все доступные варианты можно посмотреть в [src/rp2040/spi.c](https://github.com/Klipper3d/klipper/blob/master/src/rp2040/spi.c). Я выбрал для подключения шину spi1a и CS на gpio9: CLK - GP10, MOSI (обозначен SPI TX) - GP11, MISO (обозначен SPI RX) - GP8, CS - GP9. 
 
-На акселерометре нужно подключить VCC к 3.3V, GND к GND, SDO к SPI TX, SDI к SPI RX, CS к CS.
+На акселерометре нужно подключить VCC к 3.3V, GND к GND, SDO к SPI RX, SDA к SPI TX, CS к CS.
+
+| ADXL345      | Pico | Описание |
+| ----------- | ----------- | ----------- |
+| VCC      | 3.3V или 5V      | Питание датчика, 3.3В <br /> Если на плате с ADXL345 есть регулятор напряжения, можно использовать 5В.|
+| GND   | GND        | Питание датчика, GND |
+| CS   | GP9       | линия CS (Chip Select) |
+| SDO   | GP8  (SPI RX) | линия MISO (Master In Slave Out) |
+| SDA   | GP11 (SPI TX) | линия MOSI (Master Out Slave In) |
+| SCL   | GP10  (SPI SCK) | линия тактирования CLK (CLOCK) |
+
+Выходы INT1 и INT2 на adxl345 не используются.
+
 
 ## Сборка прошивки под RP2040
 
