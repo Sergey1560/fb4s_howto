@@ -92,7 +92,7 @@ sergey@orangepi3-lts:~$ dmesg |grep serial
 Соединение BluePill и Orange PI 3 LTS для прошивки:
 
 | BluePill      | OrangePI 3 LTS |
-| ----------- | ----------- | ----------- |
+| ----------- | ----------- | 
 | 3.3V      | 3.3V      | 
 | GND   | GND        | 
 | PA10 (RX)   | PD23 (TX)       |
