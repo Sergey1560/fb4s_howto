@@ -206,7 +206,7 @@ probe_points:
 | SDA   | PA7 | линия MOSI (Master Out Slave In) |
 | SCL   | PA5 | линия тактирования CLK (CLOCK) |
 
-Проверить работу акселерометра можно командой  ACCELEROMETER_QUERY в консоли klipper:
+Проверить работу акселерометра можно командой [ACCELEROMETER_QUERY](https://github.com/Klipper3d/klipper/blob/master/docs/G-Codes.md#accelerometer_query) в консоли klipper:
 
 ```
 14:35:58 $ ACCELEROMETER_QUERY
