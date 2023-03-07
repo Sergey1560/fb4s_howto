@@ -96,7 +96,7 @@ sergey@orangepi3-lts:~$ dmesg |grep serial
 | 3.3V      | 3.3V      | 
 | GND   | GND        | 
 | PA10 (RX)   | PD23 (TX)       |
-| PA9 (TX)   | PD24 (TX)        |
+| PA9 (TX)   | PD24 (RX)        |
 
 Для запуска BluePill в режиме загрузчика нужно перед подачей питания ногу обозначенную как boot0 притянуть к 3.3в. На bluepill для этого сделана отдельная перемычка. Её нужно переставить в положение "1", как на картинке:
 
@@ -105,44 +105,44 @@ sergey@orangepi3-lts:~$ dmesg |grep serial
 Удобнее всего сделать все подключения при выключенной Orange PI 3 LTS, поставить перемычку на BluePill, но не подключать линию 3.3В. После включения Orange Pi и подключени по ssh, подключить 3.3в и проверить, что плата подключается:
 
 ```
-sergey@orangepi3-lts:~$ sudo stm32flash /dev/ttyS3
+sergey@orangepi3-lts:~/klipper$ sudo stm32flash /dev/ttyS3
 stm32flash 0.5
 
 http://stm32flash.sourceforge.net/
 
 Interface serial_posix: 57600 8E1
-Version      : 0x31
+Version      : 0x22
 Option 1     : 0x00
 Option 2     : 0x00
-Device ID    : 0x0448 (STM32F070xB/F071xx/F72xx)
-- RAM        : Up to 16KiB  (6144b reserved by bootloader)
-- Flash      : Up to 128KiB (size first sector: 2x2048)
+Device ID    : 0x0410 (STM32F10xxx Medium-density)
+- RAM        : Up to 20KiB  (512b reserved by bootloader)
+- Flash      : Up to 128KiB (size first sector: 4x1024)
 - Option RAM : 16b
-- System RAM : 12KiB
+- System RAM : 2KiB
 
 ```
 
 Если подключение удалось, можно прошить плату собранной прошивкой:
 
 ```
-sergey@orangepi3-lts:~$ sudo stm32flash -w ~/klipper/out/klipper.bin -v -g 0x0  /dev/ttyS3
+sergey@orangepi3-lts:~/klipper$ sudo stm32flash -w ~/klipper/out/klipper.bin -v -g 0x0  /dev/ttyS3
 stm32flash 0.5
 
 http://stm32flash.sourceforge.net/
 
 Using Parser : Raw BINARY
 Interface serial_posix: 57600 8E1
-Version      : 0x31
+Version      : 0x22
 Option 1     : 0x00
 Option 2     : 0x00
-Device ID    : 0x0448 (STM32F070xB/F071xx/F72xx)
-- RAM        : Up to 16KiB  (6144b reserved by bootloader)
-- Flash      : Up to 128KiB (size first sector: 2x2048)
+Device ID    : 0x0410 (STM32F10xxx Medium-density)
+- RAM        : Up to 20KiB  (512b reserved by bootloader)
+- Flash      : Up to 128KiB (size first sector: 4x1024)
 - Option RAM : 16b
-- System RAM : 12KiB
+- System RAM : 2KiB
 Write to memory
 Erasing memory
-Wrote and verified address 0x08006178 (100.00%) Done.
+Wrote and verified address 0x08006400 (100.00%) Done.
 
 Starting execution at address 0x08000000... done.
 
@@ -152,29 +152,28 @@ Starting execution at address 0x08000000... done.
 
 ```
 sergey@orangepi3-lts:~$ sudo tail -f /var/log/syslog
-Mar  6 14:00:36 orangepi3-lts systemd[1]: sysstat-collect.service: Succeeded.
-Mar  6 14:00:36 orangepi3-lts systemd[1]: Finished system activity accounting tool.
-Mar  6 14:05:01 orangepi3-lts CRON[1819]: (root) CMD (command -v debian-sa1 > /dev/null && debian-sa1 1 1)
-Mar  6 14:06:40 orangepi3-lts kernel: [ 1710.256178] usb 6-1: new full-speed USB device number 2 using ohci-platform
-Mar  6 14:06:40 orangepi3-lts kernel: [ 1710.491231] usb 6-1: New USB device found, idVendor=1d50, idProduct=614e, bcdDevice= 1.00
-Mar  6 14:06:40 orangepi3-lts kernel: [ 1710.491272] usb 6-1: New USB device strings: Mfr=1, Product=2, SerialNumber=3
-Mar  6 14:06:40 orangepi3-lts kernel: [ 1710.491292] usb 6-1: Product: stm32f072xb
-Mar  6 14:06:40 orangepi3-lts kernel: [ 1710.491308] usb 6-1: Manufacturer: Klipper
-Mar  6 14:06:40 orangepi3-lts kernel: [ 1710.491323] usb 6-1: SerialNumber: 3A0037000657414131353320
-Mar  6 14:06:40 orangepi3-lts kernel: [ 1710.517531] cdc_acm 6-1:1.0: ttyACM0: USB ACM device
-Mar  6 14:06:40 orangepi3-lts kernel: [ 1710.517644] usbcore: registered new interface driver cdc_acm
-Mar  6 14:06:40 orangepi3-lts kernel: [ 1710.517653] cdc_acm: USB Abstract Control Model driver for USB modems and ISDN adapters
+Mar  7 13:10:00 orangepi3-lts systemd[1]: sysstat-collect.service: Succeeded.
+Mar  7 13:10:00 orangepi3-lts systemd[1]: Finished system activity accounting tool.
+Mar  7 13:12:22 orangepi3-lts kernel: [ 1164.531003] usb 5-1: new full-speed USB device number 2 using ohci-platform
+Mar  7 13:12:22 orangepi3-lts kernel: [ 1164.766041] usb 5-1: New USB device found, idVendor=1d50, idProduct=614e, bcdDevice= 1.00
+Mar  7 13:12:22 orangepi3-lts kernel: [ 1164.766083] usb 5-1: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+Mar  7 13:12:22 orangepi3-lts kernel: [ 1164.766103] usb 5-1: Product: stm32f103xe
+Mar  7 13:12:22 orangepi3-lts kernel: [ 1164.766118] usb 5-1: Manufacturer: Klipper
+Mar  7 13:12:22 orangepi3-lts kernel: [ 1164.766133] usb 5-1: SerialNumber: 35FF71064241393658391657
+Mar  7 13:12:22 orangepi3-lts kernel: [ 1164.791274] cdc_acm 5-1:1.0: ttyACM0: USB ACM device
+Mar  7 13:12:22 orangepi3-lts kernel: [ 1164.791359] usbcore: registered new interface driver cdc_acm
+Mar  7 13:12:22 orangepi3-lts kernel: [ 1164.791365] cdc_acm: USB Abstract Control Model driver for USB modems and ISDN adapters
 ```
 
-После подключения USB кабеля с BluePill появятся сообщения от ядра (в примере выше после Mar  6 14:06:40). Как видно, появилось новое USB устройство с  Manufacturer: Klipper. Проверяем доступные serial устройства:
+После подключения USB кабеля с BluePill появятся сообщения от ядра (в примере выше после Mar  7 13:12:22). Как видно, появилось новое USB устройство с  Manufacturer: Klipper. Проверяем доступные serial устройства:
 
 ```
 sergey@orangepi3-lts:~$ ls -l /dev/serial/by-id/
 итого 0
-lrwxrwxrwx 1 root root 13 мар  6 14:06 usb-Klipper_stm32f072xb_3A0037000657414131353320-if00 -> ../../ttyACM0
+lrwxrwxrwx 1 root root 13 мар  7 13:12 /dev/serial/by-id/usb-Klipper_stm32f103xe_35FF71064241393658391657-if00 -> ../../ttyACM0
 ```
 
-В моем случае, это тестовый стенд и есть всего одно устройство, подключенный BluePill. На реальном устройстве, может быть несколько устройств (например подключенная по USB плата принтера). Определить нужное устройство можно по серийному номеру, который был в выводе при подключении устройства и в его имени (SerialNumber: 3A0037000657414131353320).
+В моем случае, это тестовый стенд и есть всего одно устройство, подключенный BluePill. На реальном устройстве, может быть несколько устройств (например подключенная по USB плата принтера). Определить нужное устройство можно по серийному номеру, который был в выводе при подключении устройства и в его имени (SerialNumber: 35FF71064241393658391657).
 
 # Настройка Klipper
 
@@ -182,7 +181,7 @@ lrwxrwxrwx 1 root root 13 мар  6 14:06 usb-Klipper_stm32f072xb_3A003700065741
 
 ```
 [mcu bluepill]
-serial: /dev/serial/by-id/usb-Klipper_stm32f072xb_3A0037000657414131353320-if00
+serial: /dev/serial/by-id/usb-Klipper_stm32f103xe_35FF71064241393658391657-if00
 
 [adxl345]
 spi_bus: spi1
