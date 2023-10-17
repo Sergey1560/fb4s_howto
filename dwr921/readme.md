@@ -14,28 +14,11 @@
 
 <details>
 <summary>JBoot</summary>
+
 ```
-U-Boot SPL 2023.10-00953-g3c3f162691 (Oct 17 2023 - 09:24:30 +0000)
-Trying to boot from NOR
-
-
-U-Boot 2023.10-00953-g3c3f162691 (Oct 17 2023 - 09:24:30 +0000)
-
-CPU:   MediaTek MT7620N ver:2 eco:6
-Boot:  DDR, SPI-NOR 3-Byte Addr
-Clock: CPU: 580MHz, Bus: 193MHz, XTAL: 20MHz
-Model: MediaTek MT7620 RFB (WS2120)
-DRAM:  64 MiB
-Core:  39 devices, 16 uclasses, devicetree: separate
-MMC:   mmc@10130000: 0
-Loading Environment from SPIFlash... SF: Detected w25q128 with page size 256 Bytes, erase size 4 KiB, total 16 MiB
-OK
-In:    uartlite@10000c00
-Out:   uartlite@10000c00
-Err:   uartlite@10000c00
-=> sf probe
-SF: Detected w25q128 with page size 256 Bytes, erase size 4 KiB, total 16 MiB
+jboot log here
 ```
+
 </details>
 
 <details>
