@@ -22,7 +22,8 @@ jboot log here
 </details>
 
 <details>
-<summary>U-Boot</summary>
+<summary>OEM U-Boot</summary>
+
 ```
 U-Boot 1.1.3 (Nov 17 2015 - 18:08:01)
 
@@ -88,6 +89,7 @@ LINUX started...
 SDK 5.0.S.0
 Linux version 3.10.108+ (jenkins@jrdslave2) (gcc version 5.5.0 (Buildroot 2018.08-git-00492-g751df64) ) #1 Thu Aug 18 18:02:37 MSK 2022
 ```
+
 </details>
 
 <details>
@@ -115,6 +117,7 @@ Err:   uartlite@10000c00
 => sf probe
 SF: Detected w25q128 with page size 256 Bytes, erase size 4 KiB, total 16 MiB
 ```
+
 </details>
 
 Чтение памяти:
@@ -126,6 +129,7 @@ SF: 5821517 bytes @ 0x40000 Read: OK
 ```
 
 Попытка загрузки:
+
 ```
 => bootm 08000000
 ## Booting kernel from Legacy Image at 08000000 ...
@@ -142,6 +146,7 @@ Must RESET board to recover
 ```
 
 Создание образа uboot:
+
 ```
 mkimage -A mips -O linux -T kernel -C lzma -a 0 -e 0 -n Linux -d dlink_dwr-921-c1-kernel.bin kernel.bin
 ```
