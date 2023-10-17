@@ -2,6 +2,8 @@
 
 [Страница устройства](https://openwrt.org/toh/d-link/dwr-921#tab__revisions_c1c3) на сайте OpenWRT.
 
+|             |             |
+| ----------- | ----------- |
 | SOC      | MediaTek MT7620N | 
 | CPU      | 580 Mhz | 
 | RAM      | 64 Mb | 
