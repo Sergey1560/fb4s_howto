@@ -14,12 +14,14 @@
 
 <details>
 <summary>JBoot</summary>
-
+```
 jboot boot log
+```
 </details>
 
 <details>
 <summary>U-Boot</summary>
+```
 U-Boot 1.1.3 (Nov 17 2015 - 18:08:01)
 
 Board: Ralink APSoC DRAM:  64 MB
@@ -83,9 +85,8 @@ LINUX started...
 
 SDK 5.0.S.0
 Linux version 3.10.108+ (jenkins@jrdslave2) (gcc version 5.5.0 (Buildroot 2018.08-git-00492-g751df64) ) #1 Thu Aug 18 18:02:37 MSK 2022
+```
 </details>
-
-
 
 <details>
 <summary>U-Boot 2023</summary>
