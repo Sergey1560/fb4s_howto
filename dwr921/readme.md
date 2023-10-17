@@ -85,7 +85,7 @@ LINUX started...
 
 SDK 5.0.S.0
 Linux version 3.10.108+ (jenkins@jrdslave2) (gcc version 5.5.0 (Buildroot 2018.08-git-00492-g751df64) ) #1 Thu Aug 18 18:02:37 MSK 2022
-```
+``
 </details>
 
 <details>
@@ -139,4 +139,8 @@ lzma compressed: uncompress error 1
 Must RESET board to recover
 ```
 
+Создание образа uboot:
+```
 mkimage -A mips -O linux -T kernel -C lzma -a 0 -e 0 -n Linux -d dlink_dwr-921-c1-kernel.bin kernel.bin
+```
+
