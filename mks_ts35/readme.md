@@ -209,3 +209,8 @@ sergey@orangepi3-lts:~$ DISPLAY=:0 xinput_calibrator -v --device 6
 На перекрестия лучше нажимать чем-то более тонким чем палец, например стилусом. В результате в терминале будет выведен результат ввиде пример конфигурации. Можно просто добавить параметры MinX, MaxX, MinY, MinY в /etc/X11/xorg.conf.d/51-touch.conf
 
 ![MKS TS35 V2.0](./pic/klipperscreen.png)
+
+Для надежного и удобного подключения экрана родным шлейфом, можно использовать переходную плату. Ссылка на проект - [https://github.com/evgs/kross-pi-hat/tree/main](https://github.com/evgs/kross-pi-hat/tree/main)
+
+![Переходная плата](https://github.com/evgs/kross-pi-hat/raw/main/images/hats.jpg)
+
